@@ -2,9 +2,9 @@
 Description: Creates a new track after the selected track which receives the selected track's midi
 Version: 1.0
 Author: Aarrow 
-Donation: I'll add a paypal later...
+Donation:
           
-Links: Aarrow's Website [ to be added later ...] 
+Links: https://linktr.ee/aarr0w
 
 About:
   Creates a new track after the selected track which receives the selected track's midi
