@@ -44,7 +44,9 @@ Markdown
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Aarrow's Reaper Scripts\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Hey there!\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 The URL to import in ReaPack is [ https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/master/index.xml ]\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The URL to import in ReaPack is\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/master/index.xml\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Paste in Extensions>Import Repositories\par}
 }
 ]]></description>
   </metadata>
