@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow's Reaper Scripts" commit="078455f36622930f88e92b059ae5bd5f42d3a6fc">
+<index version="1" name="Aarrow Reaper Scripts " commit="078455f36622930f88e92b059ae5bd5f42d3a6fc">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc="StereoMixer">
       <metadata>
