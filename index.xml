@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="ReaPack Repository Template" commit="58a3e39ba95bd0f35846aa1f39aa4cb2574295e1">
+<index version="1" name="ReaPack Repository Template" commit="e486a2f7c75c7fa8981fea7f7c2ba0327f9c0ac9">
+  <category name="8ChannelMixer">
+    <reapack name="8ChannelMixer.txt" type="midinotenames" desc="Utility for mixing 4 stereo pairs on a single track">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Specifically for use on a track with fx sending to separate stereo channels A plugin can be used after this fx using all input channels and one output pair as 'buss processing' all on a single track\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="Aarr0w" time="2022-09-03T05:00:53Z">
+        <source>https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/e486a2f7c75c7fa8981fea7f7c2ba0327f9c0ac9/8ChannelMixer/8ChannelMixer.txt</source>
+      </version>
+    </reapack>
+  </category>
   <category name="Example">
     <reapack name="cfillion_Hello world.lua" type="script" desc="Hello world">
       <metadata>
