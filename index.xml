@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts " commit="f0d9dce2d926ac6fada3da7a98f9edd2acbf0314">
+<index version="1" name="Aarrow Reaper Scripts " commit="534f9cbad4d14fb89202a9556b12842e59563b46">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc="StereoMixer">
       <metadata>
@@ -13,6 +13,13 @@
       </metadata>
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
         <source>https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/078455f36622930f88e92b059ae5bd5f42d3a6fc/8ChannelMixer/8%20Channel%20Mixer.jsfx</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="CreateFolderFromSelection">
+    <reapack name="Create folder from selected tracks.lua" type="script" desc="Group selected tracks into a new folder track with a selected color">
+      <version name="1.0" author="Aarrow" time="2022-09-03T21:59:25Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/534f9cbad4d14fb89202a9556b12842e59563b46/CreateFolderFromSelection/Create%20folder%20from%20selected%20tracks.lua</source>
       </version>
     </reapack>
   </category>
