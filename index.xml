@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts " commit="7e0f1080b644015cad0120966b53c200ac228564">
+<index version="1" name="Aarrow Reaper Scripts " commit="f0d9dce2d926ac6fada3da7a98f9edd2acbf0314">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc="StereoMixer">
       <metadata>
@@ -41,6 +41,23 @@ Markdown
     <reapack name="Insert New Track to Receive From Selected Track_Audio.lua" type="script" desc="Creates a new track after the selected track which receives the selected track's audio">
       <version name="1.0" author="Aarrow" time="2022-09-03T21:52:32Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/7e0f1080b644015cad0120966b53c200ac228564/InsertReceiveAudio/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_Audio.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="InsertReceiveMidi">
+    <reapack name="Insert New Track to Receive From Selected Track_MIDI.lua" type="script" desc="Creates a new track after the selected track which receives the selected track's midi">
+      <version name="1.0" author="Aarrow" time="2022-09-03T21:54:37Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/89a589ffc19b56455ec66b78b1b634a800bfc392/InsertReceiveMidi/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_MIDI.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="InsertReceiveMidiAudio">
+    <reapack name="Insert New Track to Receive From Selected Track_midi and Audio.lua" type="script" desc="Creates a new track after the selected track which receives the selected track's signal">
+      <metadata>
+        <link rel="website">https://linktr.ee/aarr0w</link>
+      </metadata>
+      <version name="1.0" author="Aarrow" time="2022-09-03T21:55:20Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/f0d9dce2d926ac6fada3da7a98f9edd2acbf0314/InsertReceiveMidiAudio/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_midi%20and%20Audio.lua</source>
       </version>
     </reapack>
   </category>
