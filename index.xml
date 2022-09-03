@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow's Reaper Scripts" commit="7bbec557c6e0c1c414a998013aaadac9109d3e33">
+<index version="1" name="Aarrow's Reaper Scripts" commit="078455f36622930f88e92b059ae5bd5f42d3a6fc">
   <category name="8ChannelMixer">
-    <reapack name="8 Channel Mixer.txt" type="midinotenames" desc="Utility for mixing 4 stereo pairs on a single track">
+    <reapack name="8 Channel Mixer.jsfx" type="effect" desc="Utility for mixing 4 stereo pairs on a single track">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
@@ -11,8 +11,8 @@
 }
 ]]></description>
       </metadata>
-      <version name="1.0" author="Aarr0w" time="2022-09-03T20:36:38Z">
-        <source>https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/7bbec557c6e0c1c414a998013aaadac9109d3e33/8ChannelMixer/8%20Channel%20Mixer.txt</source>
+      <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
+        <source>https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/078455f36622930f88e92b059ae5bd5f42d3a6fc/8ChannelMixer/8%20Channel%20Mixer.jsfx</source>
       </version>
     </reapack>
   </category>
