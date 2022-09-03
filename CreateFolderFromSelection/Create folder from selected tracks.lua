@@ -2,9 +2,9 @@
 Description: Group selected tracks into a new folder track with a selected color
 Version: 1.0
 Author: Aarrow 
-Donation: I'll add a paypal later...
+Donation: 
           
-Links: Aarrow's Website [ to be added later ...] 
+Links: https://linktr.ee/aarr0w
 
 About:
   Creates a new track to serve as a folder parent for the selected tracks,
