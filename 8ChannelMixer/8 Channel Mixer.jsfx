@@ -1,8 +1,6 @@
 @description : Utility for mixing 4 stereo pairs on a single track 
-
-@author : Aarr0w
-
-@version: 1.0
+Version: 1.0
+Author: Aarrow 
 
 @about :
   Specifically for use on a track with fx sending to separate stereo channels
