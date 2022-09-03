@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts " commit="078455f36622930f88e92b059ae5bd5f42d3a6fc">
+<index version="1" name="Aarrow Reaper Scripts " commit="7e0f1080b644015cad0120966b53c200ac228564">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc="StereoMixer">
       <metadata>
@@ -34,6 +34,13 @@ Markdown
       </metadata>
       <version name="1.0" author="cfillion" time="2021-01-04T23:30:32Z">
         <source main="main">https://github.com/cfillion/reapack-repository-template/raw/58a3e39ba95bd0f35846aa1f39aa4cb2574295e1/Example/cfillion_Hello%20world.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="InsertReceiveAudio">
+    <reapack name="Insert New Track to Receive From Selected Track_Audio.lua" type="script" desc="Creates a new track after the selected track which receives the selected track's audio">
+      <version name="1.0" author="Aarrow" time="2022-09-03T21:52:32Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/7e0f1080b644015cad0120966b53c200ac228564/InsertReceiveAudio/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_Audio.lua</source>
       </version>
     </reapack>
   </category>
