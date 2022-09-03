@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts " commit="534f9cbad4d14fb89202a9556b12842e59563b46">
+<index version="1" name="Aarrow Reaper Scripts " commit="ea567f2836bdbd09b8ef1a2b75d4ee2de3590d79">
   <category name="8ChannelMixer">
-    <reapack name="8 Channel Mixer.jsfx" type="effect" desc="StereoMixer">
-      <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
-{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
-\widowctrl\hyphauto
-
-{\pard \ql \f0 \sa180 \li0 \fi0 Specifically for use on a track with fx sending to separate stereo channels A plugin can be used after this fx using all input channels and one output pair as 'buss processing' all on a single track\par}
-}
-]]></description>
-      </metadata>
+    <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
         <source>https://github.com/Aarr0w/Aarrow-Reaper-Scripts-/raw/078455f36622930f88e92b059ae5bd5f42d3a6fc/8ChannelMixer/8%20Channel%20Mixer.jsfx</source>
       </version>
