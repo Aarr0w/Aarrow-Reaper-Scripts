@@ -1,8 +1,13 @@
 /*******************************************************************************
 *  Edited from stock JS 8-Channel mixer by: Philip S. Considine                                  
 ********************************************************************/
-
-desc:8-Channel Input Switcher
+-- @description Utility for mixing 4 stereo pairs on a single track 
+-- @author Aarr0w
+-- @version 1.0
+-- @about
+--   Specifically for use on a track with fx sending to separate stereo channels
+--   A plugin can be used after this fx using all input channels and one output pair 
+--   as 'buss processing' all on a single track 
 //tags: processing routing mixer
 
 
