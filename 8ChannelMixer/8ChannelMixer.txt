@@ -1,0 +1,82 @@
+Skip to content
+Search or jump to…
+
+/*******************************************************************************
+*  Edited from stock JS 8-Channel mixer by: Philip S. Considine                                  
+********************************************************************/
+
+desc:8-Channel Input Switcher
+//tags: processing routing mixer
+
+
+slider1:4<0,4,1{1+2,3+4,5+6,7+8,AllChannels}>Output Source
+slider2:0<-60,15,0.1>Level 1+2 (dB)
+slider3:0<-60,15,0.1>Level 3+4 (dB)
+slider4:0<-60,15,0.1>Level 5+6 (dB)
+slider5:0<-60,15,0.1>Level 7+8 (dB)
+
+in_pin:input 1
+in_pin:input 2
+in_pin:input 3
+in_pin:input 4
+in_pin:input 5
+in_pin:input 6
+in_pin:input 7
+in_pin:input 8
+
+out_pin:output L
+out_pin:output R
+out_pin:output 3 
+out_pin:output 4
+out_pin:output 5
+out_pin:output 6
+out_pin:output 7
+out_pin:output 8
+
+@init
+gainMin = -60;
+gainMax = 15;
+
+@slider
+
+slider2 = min(max(slider2, gainMin), gainMax);
+slider3 = min(max(slider3, gainMin), gainMax);
+slider4 = min(max(slider4, gainMin), gainMax);
+slider5 = min(max(slider5, gainMin), gainMax);
+
+source = slider1;
+
+gain12 = 2 ^ (slider2 / 6);
+gain34 = 2 ^ (slider3 / 6);
+gain56 = 2 ^ (slider4 / 6);
+gain78 = 2 ^ (slider5 / 6);
+
+source !=4? (
+
+  ch12 = gain12 * (source == 0 ? 1 : 0);
+  ch34 = gain34 * (source == 1 ? 1 : 0);
+  ch56 = gain56 * (source == 2 ? 1 : 0);
+  ch78 = gain78 * (source == 3 ? 1 : 0);
+)
+  :
+(
+  ch12 = gain12;
+  ch34 = gain34;
+  ch56 = gain56;
+  ch78 = gain78;
+);
+
+@sample
+spl0 = spl0 * ch12;
+spl1 = spl1 * ch12;
+
+spl2 = spl2 * ch34;
+spl3 = spl3 * ch34;
+
+spl4 = spl4 * ch56;
+spl5 = spl5 * ch56;
+
+spl6 = spl6 * ch78;
+spl7 = spl7 * ch78;
+//spl0 = spl0 * ch12 + spl2 * ch34 + spl4 * ch56 + spl6 * ch78;
+//spl1 = spl1 * ch12 + spl3 * ch34 + spl5 * ch56 + spl7 * ch78;
