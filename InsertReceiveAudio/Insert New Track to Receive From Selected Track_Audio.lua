@@ -105,8 +105,7 @@ sendIndx = reaper.CreateTrackSend(source,receiver)
 --          2  = Channels 3,4
 --          3  = Channels 4,5 
 --                     ...etc
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHAN", -1)
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 0000000000)
+
 
 
 --------------------------------------------------------------------------------------------
