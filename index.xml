@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts " commit="ea567f2836bdbd09b8ef1a2b75d4ee2de3590d79">
+<index version="1" name="Aarrow Reaper Scripts" commit="ea567f2836bdbd09b8ef1a2b75d4ee2de3590d79">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
