@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts" commit="688cfadfcc9ddcb05d515d9df831aef752a7e75c">
+<index version="1" name="Aarrow Reaper Scripts" commit="76588069a94dac51228ded556f059a76494d4cbc">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
@@ -18,6 +18,9 @@
     <reapack name="Insert New Track to Receive From Selected Track_Audio.lua" type="script" desc="Creates a new track after the selected track which receives the selected track's audio">
       <version name="1.0" author="Aarrow" time="2022-09-03T21:52:32Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/7e0f1080b644015cad0120966b53c200ac228564/InsertReceiveAudio/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_Audio.lua</source>
+      </version>
+      <version name="1.01" author="Aarrow" time="2022-09-04T22:29:36Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/76588069a94dac51228ded556f059a76494d4cbc/InsertReceiveAudio/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_Audio.lua</source>
       </version>
     </reapack>
   </category>

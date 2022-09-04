@@ -1,6 +1,6 @@
 --[[
 Description: Creates a new track after the selected track which receives the selected track's audio
-Version: 1.0
+Version: 1.01
 Author: Aarrow 
 Donation: 
           
