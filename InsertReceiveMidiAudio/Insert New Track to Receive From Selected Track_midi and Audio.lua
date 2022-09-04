@@ -1,6 +1,6 @@
 --[[
 Description: Creates a new track after the selected track which receives the selected track's signal
-Version: 1.0
+Version: 1.01
 Author: Aarrow 
 Donation:          
 Links: https://linktr.ee/aarr0w
@@ -104,7 +104,8 @@ sendIndx = reaper.CreateTrackSend(source,receiver)
 --          2  = Channels 3,4
 --          3  = Channels 4,5 
 --                     ...etc
---reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_DSTCHAN", 2)
+
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 0000000000)
 
 
 --------------------------------------------------------------------------------------------
