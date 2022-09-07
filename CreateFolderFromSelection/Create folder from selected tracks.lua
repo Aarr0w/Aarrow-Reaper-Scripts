@@ -2,7 +2,8 @@
 Description: Group selected tracks into a new folder track with a selected color
 Version: 1.1
 Author: Aarrow 
-Donation: 5artsaudio@gmail.com
+Donation: https://paypal.me/Aarr0w
+
           
 Links: https://linktr.ee/aarr0w
 
