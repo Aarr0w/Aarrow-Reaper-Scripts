@@ -2,7 +2,7 @@
 Description: Creates a new track after the selected track which receives the selected track's audio
 Version: 1.1
 Author: Aarrow 
-Donation: 5artsaudio@gmail.com
+Donation: https://paypal.me/Aarr0w
 Links: https://linktr.ee/aarr0w
 
 About:

@@ -3,7 +3,7 @@ Description: Creates a new tracks which will send midi to selected track on diff
 
 Version: 1.0
 Author: Aarrow 
-Donation: 5artsaudio@gmail.com
+Donation: https://paypal.me/Aarr0w
 Links: https://linktr.ee/aarr0w
 
 About:
