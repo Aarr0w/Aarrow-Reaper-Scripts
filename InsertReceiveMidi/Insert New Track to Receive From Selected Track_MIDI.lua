@@ -1,8 +1,8 @@
 --[[
 Description: Creates a new track after the selected track which receives the selected track's midi
-Version: 1.0
+Version: 1.1
 Author: Aarrow 
-Donation:
+Donation: 5artsaudio@gmail.com
           
 Links: https://linktr.ee/aarr0w
 
@@ -61,6 +61,9 @@ local depth = reaper.GetTrackDepth(source)
 local trueDepth = reaper.GetMediaTrackInfo_Value(source,"I_FOLDERDEPTH")
 local rcvIndx
 local receiver
+-------------------------------------------------------------------------------------------
+reaper.Undo_BeginBlock()
+reaper.PreventUIRefresh(1)
 ----------------------SOURCE TRACK IS NOT A FOLDER-----------------------------------------
 if trueDepth ~= 1 then
   
@@ -97,7 +100,7 @@ end
 reaper.SetTrackColor(receiver, reaper.GetTrackColor(source))
 -- boolean retval, string stringNeedBig = reaper.GetSetTrackSendInfo_String(MediaTrack tr, integer category, integer sendidx, string parmname, string stringNeedBig, boolean setNewValue)
 local retval, sourceName = reaper.GetTrackName(source)
-reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "_>",true)
+reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "//",true)
 
 sendIndx = reaper.CreateTrackSend(source,receiver)
 --reaper.SetTrackSendInfo_Value(MediaTrack tr, integer category, integer sendidx, string parmname, number newvalue)
@@ -106,7 +109,7 @@ sendIndx = reaper.CreateTrackSend(source,receiver)
 --          3  = Channels 4,5 
 --                     ...etc
 reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHAN", -1)
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 0000000000)
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 0.0)
 
 
 --------------------------------------------------------------------------------------------

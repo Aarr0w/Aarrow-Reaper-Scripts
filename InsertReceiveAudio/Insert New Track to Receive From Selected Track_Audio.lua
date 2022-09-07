@@ -1,10 +1,9 @@
 --[[
 Description: Creates a new track after the selected track which receives the selected track's audio
-Version: 1.01
+Version: 1.1
 Author: Aarrow 
-Donation: 
-          
-Links:
+Donation: 5artsaudio@gmail.com
+Links: https://linktr.ee/aarr0w
 
 About:
   Creates a new track after the selected track which receives the selected track's audio
@@ -61,6 +60,9 @@ local depth = reaper.GetTrackDepth(source)
 local trueDepth = reaper.GetMediaTrackInfo_Value(source,"I_FOLDERDEPTH")
 local rcvIndx
 local receiver
+-------------------------------------------------------------------------------------------
+reaper.Undo_BeginBlock()
+reaper.PreventUIRefresh(1)
 ----------------------SOURCE TRACK IS NOT A FOLDER-----------------------------------------
 if trueDepth ~= 1 then
   
@@ -97,7 +99,7 @@ end
 reaper.SetTrackColor(receiver, reaper.GetTrackColor(source))
 -- boolean retval, string stringNeedBig = reaper.GetSetTrackSendInfo_String(MediaTrack tr, integer category, integer sendidx, string parmname, string stringNeedBig, boolean setNewValue)
 local retval, sourceName = reaper.GetTrackName(source)
-reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "-> ",true)
+reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "/",true)
 
 sendIndx = reaper.CreateTrackSend(source,receiver)
 --reaper.SetTrackSendInfo_Value(MediaTrack tr, integer category, integer sendidx, string parmname, number newvalue)
@@ -106,7 +108,10 @@ sendIndx = reaper.CreateTrackSend(source,receiver)
 --          3  = Channels 4,5 
 --                     ...etc
 
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHN", 1)
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_DSTCHN", 1)
 
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 31.0)
 
 --------------------------------------------------------------------------------------------
 reaper.PreventUIRefresh( -1 )
@@ -114,5 +119,5 @@ reaper.PreventUIRefresh( -1 )
 reaper.TrackList_AdjustWindows( false )
 reaper.UpdateArrange()
 
-reaper.Undo_EndBlock("Created new receive track; audio only", 0)
+reaper.Undo_EndBlock("Created new receive track; audio", 0)
 

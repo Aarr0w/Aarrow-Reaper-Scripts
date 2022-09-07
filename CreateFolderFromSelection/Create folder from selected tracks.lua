@@ -1,8 +1,8 @@
 --[[
 Description: Group selected tracks into a new folder track with a selected color
-Version: 1.0
+Version: 1.1
 Author: Aarrow 
-Donation: 
+Donation: 5artsaudio@gmail.com
           
 Links: https://linktr.ee/aarr0w
 
@@ -16,7 +16,7 @@ if reaper.CountSelectedTracks(0) == 0 then
   return reaper.MB("No tracks selected","Error",0)
 end
 
-local ret,parentName = reaper.GetUserInputs("Creating folder...",1,"Parent name:","newFolder")
+local ret,parentName = reaper.GetUserInputs("Creating folder...",1,"Parent name:","new folder")
 if not ret then return end
 
 
@@ -31,16 +31,16 @@ or prompting color select menu with lines 25&26
 (and remove line 43 ...'color = ')
 ---------------------------------------------]]
 
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-
+------------------------------------------------------------------------------
 local firstTrack = reaper.GetSelectedTrack(0,0)
 local parentIndex = reaper.GetMediaTrackInfo_Value(firstTrack,"IP_TRACKNUMBER")-1
 local lastSel = reaper.GetSelectedTrack(0, reaper.CountSelectedTracks(0) - 1)
 local lastSelIdx = reaper.GetMediaTrackInfo_Value(lastSel, "IP_TRACKNUMBER") - 1
 
 local color = reaper.GetTrackColor(firstTrack)
+-----------------------------------------------------------------------------
+reaper.Undo_BeginBlock()
+reaper.PreventUIRefresh(1)
 -----------------------------------------------------------------------------
 
 
@@ -75,4 +75,4 @@ reaper.PreventUIRefresh( -1 )
 reaper.TrackList_AdjustWindows( false )
 reaper.UpdateArrange()
 
-reaper.Undo_EndBlock("Create folder to contain selected tracks, choosing name and color", 0)
+reaper.Undo_EndBlock("Create folder to contain selected tracks, choosing name", 0)

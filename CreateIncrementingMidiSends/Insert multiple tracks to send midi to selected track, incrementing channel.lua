@@ -1,12 +1,13 @@
 --[[
-Description: Creates a new track after the selected track which receives the selected track's signal
-Version: 1.1
+Description: Creates a new tracks which will send midi to selected track on different channels
+
+Version: 1.0
 Author: Aarrow 
-Donation: 5artsaudio@gmail.com         
+Donation: 5artsaudio@gmail.com
 Links: https://linktr.ee/aarr0w
 
 About:
-  Creates a new track after the selected track which receives the selected track's signal
+  Creates new tracks after the selected track which sends midi to selected track on different channels
 --]]
 
 -- Licensed under the GNU GPL v3
@@ -53,64 +54,95 @@ P_SRCTRACK : MediaTrack * : source track, only applies for sends/recvs (read-onl
 if reaper.CountSelectedTracks(0) == 0 then
   return reaper.MB("No tracks selected","Error",0)
 end
--------------------------------------------------------------------------------------------
-local source = reaper.GetSelectedTrack(0,0)
 
-local depth = reaper.GetTrackDepth(source)
-local trueDepth = reaper.GetMediaTrackInfo_Value(source,"I_FOLDERDEPTH")
-local rcvIndx
-local receiver
+local ret,trackCount = reaper.GetUserInputs("Creating tracks...",1,"How many?",1)
+if not ret then return end
 -------------------------------------------------------------------------------------------
+local receiver = reaper.GetSelectedTrack(0,0)
+
+local depth = reaper.GetTrackDepth(receiver)
+local trueDepth = reaper.GetMediaTrackInfo_Value(receiver,"I_FOLDERDEPTH")
+local srcIndx
+local source
+
+srcIndx = reaper.GetMediaTrackInfo_Value(receiver,"IP_TRACKNUMBER")
+-------------------------------------------------------------------------------------------------
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 ----------------------SOURCE TRACK IS NOT A FOLDER-----------------------------------------
 if trueDepth ~= 1 then
   
-  rcvIndx = reaper.GetMediaTrackInfo_Value(source,"IP_TRACKNUMBER")
-  reaper.InsertTrackAtIndex(rcvIndx , true)
-  receiver = reaper.GetTrack( 0, rcvIndx )
   
+    
+  
+  for x = srcIndx, srcIndx + trackCount - 1 do 
+    reaper.InsertTrackAtIndex(x , true)
+    source = reaper.GetTrack( 0, x) 
+    
+    --_MIDIFLAGS : int * : low 5 bits=source channel 0=all, 1-16, next 5 bits=dest channel, 0=orig, 1-16=chan
+    
+    --31.0 = None
+    --(32*destChan) + (1*sourceChannel);  
+    --      129 = Channel 1 >> Channel 4 ;
+    --      32  = All >> Channel 1 ;
+    reaper.SetTrackColor(source, reaper.GetTrackColor(receiver))
+    local retval, receiverName = reaper.GetTrackName(receiver)
+    reaper.GetSetMediaTrackInfo_String(source,"P_NAME",receiverName .. "\\",true)
+    
+    
+    channel = x-srcIndx+1
+    sendIndx = reaper.CreateTrackSend(source,receiver)
+    reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 32*channel)
+    reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHAN", -1)
+  end
+ 
+
   
     if trueDepth <0 then
-       reaper.SetMediaTrackInfo_Value(source,"I_FOLDERDEPTH",0)
-       reaper.SetMediaTrackInfo_Value(receiver,"I_FOLDERDEPTH",-depth)
+       reaper.SetMediaTrackInfo_Value(receiver,"I_FOLDERDEPTH",0)
+       reaper.SetMediaTrackInfo_Value(source,"I_FOLDERDEPTH",-depth)
     end
   
 else --------------------SOURCE TRACK IS A FOLDER -----------------------------------------
 
-  rcvIndx =  reaper.GetMediaTrackInfo_Value(source,"IP_TRACKNUMBER")
   
   ------ensures the new track is at the same folder - depth as the source track
   -- remember GetTrackDepth !=  MediaTrackInfo_Value(..."FOLDERDEPTH")  // see top for details
-  while reaper.GetTrackDepth(reaper.GetTrack(0,rcvIndx)) ~= depth do  
-    rcvIndx = rcvIndx + 1
-    if not reaper.GetTrack(0,rcvIndx) then
+  
+  while reaper.GetTrackDepth(reaper.GetTrack(0,srcIndx)) ~= depth do  
+    srcIndx = srcIndx + 1
+    if not reaper.GetTrack(0,srcIndx) then
       break
     end
   end
   
-  reaper.InsertTrackAtIndex(rcvIndx , true)
-  receiver = reaper.GetTrack( 0, rcvIndx )
+  for x = srcIndx, srcIndx + trackCount - 1 do 
+    reaper.InsertTrackAtIndex(x,true)
+    source = reaper.GetTrack(0,x)
+    
+    reaper.SetTrackColor(source, reaper.GetTrackColor(receiver))
+    local retval, receiverName = reaper.GetTrackName(receiver)
+    reaper.GetSetMediaTrackInfo_String(source,"P_NAME",receiverName .. "\\",true)
+    
+    channel = x-srcIndx+1
+    sendIndx = reaper.CreateTrackSend(source,receiver)
+    reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 32*channel)
+    reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHAN", -1)
+  end
   
-  reaper.SetMediaTrackInfo_Value(receiver,"I_FOLDERDEPTH",0)
+  reaper.SetMediaTrackInfo_Value(source,"I_FOLDERDEPTH",0)
 end
 --------------------------------------------------------------------------------------------
 
-reaper.SetTrackColor(receiver, reaper.GetTrackColor(source))
--- boolean retval, string stringNeedBig = reaper.GetSetTrackSendInfo_String(MediaTrack tr, integer category, integer sendidx, string parmname, string stringNeedBig, boolean setNewValue)
-local retval, sourceName = reaper.GetTrackName(source)
-reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "//",true)
+--sendIndx = reaper.CreateTrackSend(source,receiver)
 
-sendIndx = reaper.CreateTrackSend(source,receiver)
 --reaper.SetTrackSendInfo_Value(MediaTrack tr, integer category, integer sendidx, string parmname, number newvalue)
 -- DSTCHN : 1  = Channels 1,2
 --          2  = Channels 3,4
 --          3  = Channels 4,5 
 --                     ...etc
 
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHN", 1)
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_DSTCHN", 1)
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 0000000000)
+
 
 
 --------------------------------------------------------------------------------------------
@@ -119,5 +151,5 @@ reaper.PreventUIRefresh( -1 )
 reaper.TrackList_AdjustWindows( false )
 reaper.UpdateArrange()
 
-reaper.Undo_EndBlock("Created new receive track", 0)
+reaper.Undo_EndBlock("Created new midi send tracks", 0)
 --]]
