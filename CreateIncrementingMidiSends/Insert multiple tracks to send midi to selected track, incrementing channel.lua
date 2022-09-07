@@ -1,6 +1,5 @@
 --[[
 Description: Creates a new tracks which will send midi to selected track on different channels
-
 Version: 1.1
 Author: Aarrow 
 Donation: https://paypal.me/Aarr0w
