@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts" commit="35bc54045918425c0edbd0ab2a6db961ac02d858">
+<index version="1" name="Aarrow Reaper Scripts" commit="2c6743f6baf3800626fc77eeeb0fe4f5a2cd63fa">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
@@ -9,8 +9,14 @@
   </category>
   <category name="CreateFolderFromSelection">
     <reapack name="Create folder from selected tracks.lua" type="script" desc="Group selected tracks into a new folder track with a selected color">
+      <metadata>
+        <link rel="donation">https://paypal.me/Aarr0w</link>
+      </metadata>
       <version name="1.0" author="Aarrow" time="2022-09-03T21:59:25Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/534f9cbad4d14fb89202a9556b12842e59563b46/CreateFolderFromSelection/Create%20folder%20from%20selected%20tracks.lua</source>
+      </version>
+      <version name="1.1" author="Aarrow" time="2022-09-07T05:22:03Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/89985b7efea1b8cdad2af919c913fe62f6668a4a/CreateFolderFromSelection/Create%20folder%20from%20selected%20tracks.lua</source>
       </version>
     </reapack>
   </category>
@@ -26,8 +32,14 @@
   </category>
   <category name="InsertReceiveMidi">
     <reapack name="Insert New Track to Receive From Selected Track_MIDI.lua" type="script" desc="Creates a new track after the selected track which receives the selected track's midi">
+      <metadata>
+        <link rel="donation">https://paypal.me/Aarr0w</link>
+      </metadata>
       <version name="1.0" author="Aarrow" time="2022-09-03T21:54:37Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/89a589ffc19b56455ec66b78b1b634a800bfc392/InsertReceiveMidi/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_MIDI.lua</source>
+      </version>
+      <version name="1.1" author="Aarrow" time="2022-09-07T05:24:00Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/2c6743f6baf3800626fc77eeeb0fe4f5a2cd63fa/InsertReceiveMidi/Insert%20New%20Track%20to%20Receive%20From%20Selected%20Track_MIDI.lua</source>
       </version>
     </reapack>
   </category>
