@@ -1,6 +1,6 @@
 --[[
 Description: Creates a new track after the selected track which receives the selected track's midi
-Version: 1.1
+Version: 1.2
 Author: Aarrow 
 Donation: https://paypal.me/Aarr0w
           
@@ -103,11 +103,7 @@ local retval, sourceName = reaper.GetTrackName(source)
 reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "//",true)
 
 sendIndx = reaper.CreateTrackSend(source,receiver)
---reaper.SetTrackSendInfo_Value(MediaTrack tr, integer category, integer sendidx, string parmname, number newvalue)
--- DSTCHN : 1  = Channels 1,2
---          2  = Channels 3,4
---          3  = Channels 4,5 
---                     ...etc
+
 reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHAN", -1)
 reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 0.0)
 

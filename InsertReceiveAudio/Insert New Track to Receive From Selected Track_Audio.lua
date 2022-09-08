@@ -1,8 +1,8 @@
 --[[
 Description: Creates a new track after the selected track which receives the selected track's audio
-Version: 1.1
+Version: 1.2
 Author: Aarrow 
-Donation: https://paypal.me/Aarr0w
+Donation: 5artsaudio@gmail.com
 Links: https://linktr.ee/aarr0w
 
 About:
@@ -103,13 +103,14 @@ reaper.GetSetMediaTrackInfo_String(receiver,"P_NAME",sourceName .. "/",true)
 
 sendIndx = reaper.CreateTrackSend(source,receiver)
 --reaper.SetTrackSendInfo_Value(MediaTrack tr, integer category, integer sendidx, string parmname, number newvalue)
--- DSTCHN : 1  = Channels 1,2
+-- DSTCHN : 0  = Channels 1,2
+--          1  = Channels 2,3
 --          2  = Channels 3,4
 --          3  = Channels 4,5 
 --                     ...etc
 
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHN", 1)
-reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_DSTCHN", 1)
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_SRCCHAN", 0)
+reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_DSTCHN", 0)
 
 reaper.SetTrackSendInfo_Value(source, 0, sendIndx,"I_MIDIFLAGS", 31.0)
 

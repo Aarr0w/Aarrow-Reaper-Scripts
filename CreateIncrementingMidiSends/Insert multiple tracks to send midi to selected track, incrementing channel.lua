@@ -132,19 +132,6 @@ else --------------------SOURCE TRACK IS A FOLDER ------------------------------
   reaper.SetMediaTrackInfo_Value(source,"I_FOLDERDEPTH",0)
 end
 --------------------------------------------------------------------------------------------
-
---sendIndx = reaper.CreateTrackSend(source,receiver)
-
---reaper.SetTrackSendInfo_Value(MediaTrack tr, integer category, integer sendidx, string parmname, number newvalue)
--- DSTCHN : 1  = Channels 1,2
---          2  = Channels 3,4
---          3  = Channels 4,5 
---                     ...etc
-
-
-
-
---------------------------------------------------------------------------------------------
 reaper.PreventUIRefresh( -1 )
 
 reaper.TrackList_AdjustWindows( false )
