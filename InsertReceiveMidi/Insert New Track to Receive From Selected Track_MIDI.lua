@@ -3,7 +3,6 @@ Description: Creates a new track after the selected track which receives the sel
 Version: 1.2
 Author: Aarrow 
 Donation: https://paypal.me/Aarr0w
-          
 Links: https://linktr.ee/aarr0w
 
 About:
