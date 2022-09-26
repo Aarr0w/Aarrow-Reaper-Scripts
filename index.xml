@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts" commit="ae268ecdfb03cc2bfb599aed7fa2d6305bf8b240">
+<index version="1" name="Aarrow Reaper Scripts" commit="c93d4a042612f566a26a7a0d28ab77751815bf15">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
@@ -17,6 +17,16 @@
       </version>
       <version name="1.1" author="Aarrow" time="2022-09-07T05:22:03Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/89985b7efea1b8cdad2af919c913fe62f6668a4a/CreateFolderFromSelection/Create%20folder%20from%20selected%20tracks.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="CreateGrooveWithVelocity">
+    <reapack name="Create groove from selected media items (with velocity).lua" type="script" desc="Creates Groove From Selected Media Items With Velocity Based on Peak Values">
+      <metadata>
+        <link rel="donation">https://paypal.me/Aarr0w</link>
+      </metadata>
+      <version name="1.0" author="Aarrow" time="2022-09-26T19:51:31Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/c93d4a042612f566a26a7a0d28ab77751815bf15/CreateGrooveWithVelocity/Create%20groove%20from%20selected%20media%20items%20(with%20velocity).lua</source>
       </version>
     </reapack>
   </category>
