@@ -237,7 +237,6 @@ local startPos = reaper.GetMediaItemInfo_Value( reaper.GetSelectedMediaItem(0,0)
 local iPos
 local selectedItem
 local take
-local average
 ----------------------------------------------------------------------------------
 for i = 0, ic - 1 do
   
@@ -256,16 +255,6 @@ for i = 0, ic - 1 do
   mPos[i+1]   = iPos
   
 end
-
--- find average value of peaks
-
-local sum = 0
-
-for k,v in pairs(peaks) do
-      sum = sum + v
-end
-
-average = (sum / iCount)
 local endPos = iPos + reaper.GetMediaItemInfo_Value( selectedItem, "D_LENGTH" )
 
 --reaper.ShowConsoleMsg("\nICOUNT : " .. iCount)
@@ -277,6 +266,7 @@ local orderedPeaks = {}
 local lowerLimit  
 local upperLimit
 local IQR
+local average
 
 for j,x in ipairs(peaks) do orderedPeaks[j] = x end
 table.sort(orderedPeaks)
@@ -301,6 +291,20 @@ else
   --reaper.ShowConsoleMsg("\nhighest Value :" .. orderedPeaks[#peaks-1])
   --reaper.ShowConsoleMsg("\nLower Limit :" .. lowerLimit)
   --reaper.ShowConsoleMsg("\nUpper Limit :" .. upperLimit)
+  
+  -- find average value of peaks
+  
+  local sum = 0
+  local n =0
+
+  for k,v in pairs(peaks) do
+     if v <= upperLimit and v >= lowerLimit then
+        sum = sum + v
+        n = n + 1 
+     end
+  end
+  
+  average = (sum / n )
 end
 
 -- create new track and store MIDI------------------------------------------------------------------------
@@ -314,7 +318,7 @@ local position
 local offset
 local qn
 local ppq
-local scale = math.abs(40 / IQR )
+local scale = math.abs(45 / IQR )
 
 local bpm, bpi = reaper.GetProjectTimeSignature()
 local noteLength = ( 60000/bpm ) /4 --corresponds to the length on one sixteenth note (assuming bpm doesn't change w/in the project)
@@ -326,7 +330,7 @@ for x = 1, iCount do
   if peaks[x] > upperLimit then
     velocity = 127
   elseif peaks[x] < lowerLimit then
-    velocity = 30
+    velocity = 20
   else
     velocity = 75 - math.floor(scale * (average - peaks[x]))
     --reaper.ShowConsoleMsg("\nCurrent Peak: " .. peaks[x] .. "| adding " .. (velocity-75))
