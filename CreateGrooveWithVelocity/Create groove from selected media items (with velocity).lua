@@ -327,12 +327,10 @@ reaper.MIDI_Sort(midiItemTake)  -- I *think* this helps when midi is getting fro
 for x = 1, iCount do
  
      
-  if peaks[x] > upperLimit then
-    velocity = 127
-  elseif peaks[x] < lowerLimit then
-    velocity = 20
-  else
-    velocity = 75 - math.floor(scale * (average - peaks[x]))
+
+    velocity = math.min( 
+	         math.max( 20, 75 - math.floor(scale * (average - peaks[x])) ),
+               127)
     --reaper.ShowConsoleMsg("\nCurrent Peak: " .. peaks[x] .. "| adding " .. (velocity-75))
   end
   --]]
