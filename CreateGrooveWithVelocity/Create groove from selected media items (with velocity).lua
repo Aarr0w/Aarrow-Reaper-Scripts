@@ -237,7 +237,6 @@ local startPos = reaper.GetMediaItemInfo_Value( reaper.GetSelectedMediaItem(0,0)
 local iPos
 local selectedItem
 local take
-local average
 ----------------------------------------------------------------------------------
 for i = 0, ic - 1 do
   
@@ -257,19 +256,9 @@ for i = 0, ic - 1 do
   
 end
 
--- find average value of peaks
-
-local sum = 0
-
-for k,v in pairs(peaks) do
-      sum = sum + v
-end
-
-average = (sum / iCount)
 local endPos = iPos + reaper.GetMediaItemInfo_Value( selectedItem, "D_LENGTH" )
 
 --reaper.ShowConsoleMsg("\nICOUNT : " .. iCount)
---reaper.ShowConsoleMsg("\nAVERAGE VOLUME : " .. average)
 
 -- determine outliers-------------------------------------------------------------------------------------
 --local orderedPeaks = peaks    .... this copies array by reference.... and causes me headaches
@@ -277,10 +266,13 @@ local orderedPeaks = {}
 local lowerLimit  
 local upperLimit
 local IQR
+local average
+local inc = 0
+
 
 for j,x in ipairs(peaks) do orderedPeaks[j] = x end
 table.sort(orderedPeaks)
-reaper.ShowConsoleMsg("\n-----" .. "\n" .. printTable(orderedPeaks))
+--reaper.ShowConsoleMsg("\n-----" .. "\n" .. printTable(orderedPeaks))
 
 if iCount < 5 then
   --reaper.ShowConsoleMsg("\nToo small! At least five items in selection required ")
@@ -288,7 +280,7 @@ if iCount < 5 then
   upperLimit = 1000
   IQR = orderedPeaks[#orderedPeaks]- orderedPeaks[1] 
 else
-  local qrtr = math.floor(iCount/4) 
+  local qrtr = math.floor(iCount/4)  
   local thirdQrtr = math.floor( (iCount*3)/4 )
   local q1  =  (orderedPeaks[qrtr] +      orderedPeaks[math.max(1,qrtr+1)])   /2
   local q3  =  (orderedPeaks[thirdQrtr]+  orderedPeaks[thirdQrtr-1])        /2 
@@ -297,14 +289,27 @@ else
   lowerLimit = q1 - (1.5*IQR) 
   upperLimit = q3 + (1.5*IQR) 
   --reaper.ShowConsoleMsg("\nQ3 :" .. q3)
-  --reaper.ShowConsoleMsg("\nQ1 :" .. q1)
+  --reaper.ShowConsoleMsg("\nQ1 :" .. q1) 
   --reaper.ShowConsoleMsg("\nIQR :" .. IQR)
-  --reaper.ShowConsoleMsg("\nlowest Value :" .. orderedPeaks[1])
-  --reaper.ShowConsoleMsg("\nhighest Value :" .. orderedPeaks[#peaks-1])
-  --reaper.ShowConsoleMsg("\nLower Limit :" .. lowerLimit)
-  --reaper.ShowConsoleMsg("\nUpper Limit :" .. upperLimit)
+  reaper.ShowConsoleMsg("\nlowest Value :" .. orderedPeaks[1])
+  reaper.ShowConsoleMsg("\nhighest Value :" .. orderedPeaks[#peaks-1])
+  reaper.ShowConsoleMsg("\nLower Limit :" .. lowerLimit)
+  reaper.ShowConsoleMsg("\nUpper Limit :" .. upperLimit)
 end
 
+-- find average value of peaks
+
+local sum = 0
+
+for k,v in pairs(peaks) do
+    if v >= lowerLimit and v<= upperLimit then
+      sum = sum + v
+      inc = inc +1 
+    end
+end
+
+average = (sum / inc)
+--reaper.ShowConsoleMsg("\nAVERAGE VOLUME : " .. average)
 -- create new track and store MIDI------------------------------------------------------------------------
 
 local idx = reaper.GetMediaTrackInfo_Value( selTrack,"IP_TRACKNUMBER")
@@ -316,7 +321,7 @@ local position
 local offset 
 local qn
 local ppq
-local scale = math.abs(45 / IQR )
+local scale = math.abs(60 / IQR )
 
 local bpm, bpi = reaper.GetProjectTimeSignature()
 local noteLength = ( 60000/bpm ) /4 --corresponds to the length on one sixteenth note (assuming bpm doesn't change w/in the project)
@@ -333,7 +338,7 @@ for x = 1, iCount do
   --]]
 
   
-  position    = mPos[x]
+  position    = mPos[x] 
   offset      = startPos
   qn          = reaper.TimeMap2_timeToQN(nil, position - offset)
   ppq         = reaper.MIDI_GetPPQPosFromProjQN(midiItemTake, qn)  --qn + 1 : FROM THE FORUM FRIENDS
