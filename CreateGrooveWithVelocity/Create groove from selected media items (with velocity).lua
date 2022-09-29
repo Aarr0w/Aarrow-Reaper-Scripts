@@ -237,6 +237,7 @@ local startPos = reaper.GetMediaItemInfo_Value( reaper.GetSelectedMediaItem(0,0)
 local iPos
 local selectedItem
 local take
+local average
 ----------------------------------------------------------------------------------
 for i = 0, ic - 1 do
   
@@ -255,6 +256,16 @@ for i = 0, ic - 1 do
   mPos[i+1]   = iPos
   
 end
+
+-- find average value of peaks
+
+local sum = 0
+
+for k,v in pairs(peaks) do
+      sum = sum + v
+end
+
+average = (sum / iCount)
 local endPos = iPos + reaper.GetMediaItemInfo_Value( selectedItem, "D_LENGTH" )
 
 --reaper.ShowConsoleMsg("\nICOUNT : " .. iCount)
@@ -266,11 +277,10 @@ local orderedPeaks = {}
 local lowerLimit  
 local upperLimit
 local IQR
-local average
 
 for j,x in ipairs(peaks) do orderedPeaks[j] = x end
 table.sort(orderedPeaks)
---reaper.ShowConsoleMsg("\n-----" .. "\n" .. printTable(peaks))
+reaper.ShowConsoleMsg("\n-----" .. "\n" .. printTable(orderedPeaks))
 
 if iCount < 5 then
   --reaper.ShowConsoleMsg("\nToo small! At least five items in selection required ")
@@ -280,31 +290,19 @@ if iCount < 5 then
 else
   local qrtr = math.floor(iCount/4) 
   local thirdQrtr = math.floor( (iCount*3)/4 )
-  local q1  =  orderedPeaks[qrtr] +      orderedPeaks[math.max(1,qrtr+1)]   /2
-  local q3  =  orderedPeaks[thirdQrtr]+  orderedPeaks[thirdQrtr-1]        /2 
+  local q1  =  (orderedPeaks[qrtr] +      orderedPeaks[math.max(1,qrtr+1)])   /2
+  local q3  =  (orderedPeaks[thirdQrtr]+  orderedPeaks[thirdQrtr-1])        /2 
 
-  IQR = q3-q1
+  IQR = math.abs(q3-q1)
   lowerLimit = q1 - (1.5*IQR) 
   upperLimit = q3 + (1.5*IQR) 
-  --reaper.ShowConsoleMsg("\nIQR :" .. iqr)
+  --reaper.ShowConsoleMsg("\nQ3 :" .. q3)
+  --reaper.ShowConsoleMsg("\nQ1 :" .. q1)
+  --reaper.ShowConsoleMsg("\nIQR :" .. IQR)
   --reaper.ShowConsoleMsg("\nlowest Value :" .. orderedPeaks[1])
   --reaper.ShowConsoleMsg("\nhighest Value :" .. orderedPeaks[#peaks-1])
   --reaper.ShowConsoleMsg("\nLower Limit :" .. lowerLimit)
   --reaper.ShowConsoleMsg("\nUpper Limit :" .. upperLimit)
-  
-  -- find average value of peaks
-  
-  local sum = 0
-  local n =0
-
-  for k,v in pairs(peaks) do
-     if v <= upperLimit and v >= lowerLimit then
-        sum = sum + v
-        n = n + 1 
-     end
-  end
-  
-  average = (sum / n )
 end
 
 -- create new track and store MIDI------------------------------------------------------------------------
@@ -315,7 +313,7 @@ local newTrack = reaper.GetTrack(0,idx)
 local midiItemTake =  reaper.GetMediaItemTake(reaper.CreateNewMIDIItemInProj(newTrack, startPos, endPos ),0)
 local velocity 
 local position
-local offset
+local offset 
 local qn
 local ppq
 local scale = math.abs(45 / IQR )
@@ -324,15 +322,16 @@ local bpm, bpi = reaper.GetProjectTimeSignature()
 local noteLength = ( 60000/bpm ) /4 --corresponds to the length on one sixteenth note (assuming bpm doesn't change w/in the project)
 reaper.MIDI_Sort(midiItemTake)  -- I *think* this helps when midi is getting frozen
 
-for x = 1, iCount do
-    velocity = math.min( 
-	         math.max( 20, 75 - math.floor(scale * (average - peaks[x])) ),
-               127)
-    		   --reaper.ShowConsoleMsg("\nCurrent Peak: " .. peaks[x] .. "| adding " .. (velocity-75))
-
-  --]]
 
 --------------------------------------- place midi with values scaled to velocity --------------------------------
+for x = 1, iCount do
+
+  velocity = math.min( 
+             math.max( 10, 75 - math.floor(scale * (average - peaks[x])) ),
+                 127)
+            --reaper.ShowConsoleMsg("\nCurrent Peak: " .. peaks[x] .. "| adding " .. (velocity-75))
+  --]]
+
   
   position    = mPos[x]
   offset      = startPos
