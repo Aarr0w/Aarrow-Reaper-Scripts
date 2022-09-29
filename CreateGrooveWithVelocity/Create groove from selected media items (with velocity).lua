@@ -325,14 +325,11 @@ local noteLength = ( 60000/bpm ) /4 --corresponds to the length on one sixteenth
 reaper.MIDI_Sort(midiItemTake)  -- I *think* this helps when midi is getting frozen
 
 for x = 1, iCount do
- 
-     
-
     velocity = math.min( 
 	         math.max( 20, 75 - math.floor(scale * (average - peaks[x])) ),
                127)
-    --reaper.ShowConsoleMsg("\nCurrent Peak: " .. peaks[x] .. "| adding " .. (velocity-75))
-  end
+    		   --reaper.ShowConsoleMsg("\nCurrent Peak: " .. peaks[x] .. "| adding " .. (velocity-75))
+
   --]]
 
 --------------------------------------- place midi with values scaled to velocity --------------------------------
