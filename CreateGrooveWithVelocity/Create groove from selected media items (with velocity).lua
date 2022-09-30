@@ -278,7 +278,7 @@ if iCount < 5 then
   --reaper.ShowConsoleMsg("\nToo small! At least five items in selection required ")
   lowerLimit = -1000
   upperLimit = 1000
-  IQR = orderedPeaks[#orderedPeaks]- orderedPeaks[1] 
+  IQR = math.abs(orderedPeaks[#orderedPeaks]- orderedPeaks[1]) 
 else
   local qrtr = math.floor(iCount/4)  
   local thirdQrtr = math.floor( (iCount*3)/4 )
@@ -321,7 +321,7 @@ local position
 local offset 
 local qn
 local ppq
-local scale = math.abs(60 / IQR )
+local scale = 50 / IQR 
 
 local bpm, bpi = reaper.GetProjectTimeSignature()
 local noteLength = ( 60000/bpm ) /4 --corresponds to the length on one sixteenth note (assuming bpm doesn't change w/in the project)
