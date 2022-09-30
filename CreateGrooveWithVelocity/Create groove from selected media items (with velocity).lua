@@ -342,7 +342,7 @@ for x = 1, iCount do
   offset      = startPos
   qn          = reaper.TimeMap2_timeToQN(nil, position - offset)
   ppq         = reaper.MIDI_GetPPQPosFromProjQN(midiItemTake, qn)  --qn + 1 : FROM THE FORUM FRIENDS
-  noteLength  = ppq/4
+  noteLength  = ppq/4								 --corresponds to 1/16th note
   
 
   reaper.MIDI_InsertNote(midiItemTake, false, false, ppq, ppq + noteLength, 1, 69, velocity, true)
