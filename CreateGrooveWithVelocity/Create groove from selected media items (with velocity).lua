@@ -1,6 +1,6 @@
 --[[
 Description: Creates Groove From Selected Media Items With Velocity Based on Peak Values
-Version: 1.0
+Version: 1.1
 Author: Aarrow 
 Donation: https://paypal.me/Aarr0w
 
@@ -291,10 +291,10 @@ else
   --reaper.ShowConsoleMsg("\nQ3 :" .. q3)
   --reaper.ShowConsoleMsg("\nQ1 :" .. q1) 
   --reaper.ShowConsoleMsg("\nIQR :" .. IQR)
-  reaper.ShowConsoleMsg("\nlowest Value :" .. orderedPeaks[1])
-  reaper.ShowConsoleMsg("\nhighest Value :" .. orderedPeaks[#peaks-1])
-  reaper.ShowConsoleMsg("\nLower Limit :" .. lowerLimit)
-  reaper.ShowConsoleMsg("\nUpper Limit :" .. upperLimit)
+  --reaper.ShowConsoleMsg("\nlowest Value :" .. orderedPeaks[1])
+  --reaper.ShowConsoleMsg("\nhighest Value :" .. orderedPeaks[#peaks-1])
+  --reaper.ShowConsoleMsg("\nLower Limit :" .. lowerLimit)
+  --reaper.ShowConsoleMsg("\nUpper Limit :" .. upperLimit)
 end
 
 -- find average value of peaks
