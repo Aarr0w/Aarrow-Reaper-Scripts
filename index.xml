@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts" commit="c93d4a042612f566a26a7a0d28ab77751815bf15">
+<index version="1" name="Aarrow Reaper Scripts" commit="5b8e938858f683a624552c5c4b948ba0a3e7089e">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
@@ -27,6 +27,9 @@
       </metadata>
       <version name="1.0" author="Aarrow" time="2022-09-26T19:51:31Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/c93d4a042612f566a26a7a0d28ab77751815bf15/CreateGrooveWithVelocity/Create%20groove%20from%20selected%20media%20items%20(with%20velocity).lua</source>
+      </version>
+      <version name="1.1" author="Aarrow" time="2022-10-02T23:41:02Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/5b8e938858f683a624552c5c4b948ba0a3e7089e/CreateGrooveWithVelocity/Create%20groove%20from%20selected%20media%20items%20(with%20velocity).lua</source>
       </version>
     </reapack>
   </category>
