@@ -321,7 +321,7 @@ local position
 local offset 
 local qn
 local ppq
-local scale = 50 / IQR 
+local scale = 30 / (IQR/2)
 
 local bpm, bpi = reaper.GetProjectTimeSignature()
 local noteLength = ( 60000/bpm ) /4 --corresponds to the length on one sixteenth note (assuming bpm doesn't change w/in the project)
