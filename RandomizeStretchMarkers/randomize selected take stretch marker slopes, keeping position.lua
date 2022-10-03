@@ -1,3 +1,17 @@
+--[[
+Description: Group selected tracks into a new folder track with a selected color
+Version: 0.1
+Author: Aarrow 
+Donation: https://paypal.me/Aarr0w
+
+          
+Links: https://linktr.ee/aarr0w
+
+About:
+  Creates a new track to serve as a folder parent for the selected tracks,
+  prompting the user for a name and color 
+--]]
+
 local item = reaper.GetSelectedMediaItem(0,0)
 local take = reaper.GetTake(item,0)
 local retval
