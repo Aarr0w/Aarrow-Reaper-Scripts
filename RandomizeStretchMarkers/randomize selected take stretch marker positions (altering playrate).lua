@@ -1,6 +1,6 @@
 --[[ 
 Description: Alters playrate between stretch markers
-Version: 1.0
+Version: 1.1
 Author: Aarrow 
 Donation: https://paypal.me/Aarr0w
 
@@ -8,7 +8,7 @@ Donation: https://paypal.me/Aarr0w
 Links: https://linktr.ee/aarr0w
  
 About:
-   Alters stretch marker positions w/o changing slope, effectively altering playrate
+   Alters stretch marker positions w/ 0.0 slope, effectively altering playrate
 --]]
 
 local item = reaper.GetSelectedMediaItem(0,0)
@@ -25,9 +25,8 @@ reaper.PreventUIRefresh(1)
 for i = 0, reaper.GetTakeNumStretchMarkers(take) do
   
   retval, position, srcpos = reaper.GetTakeStretchMarker(take, i)
-  slope = reaper.GetTakeStretchMarkerSlope(take, i)
   
-  --reaper.SetTakeStretchMarkerSlope(take,i,slope)
+  reaper.SetTakeStretchMarkerSlope(take,i,0.0)
   position = position + math.random(-100,100)*0.01  
  
   
