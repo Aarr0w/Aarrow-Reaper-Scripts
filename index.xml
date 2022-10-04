@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts" commit="965d26b6c0a2aee1820ec575e5da6550195e5a46">
+<index version="1" name="Aarrow Reaper Scripts" commit="c739a506c0d26373066dcca1b709d067243cc202">
   <category name="8ChannelMixer">
     <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
       <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
@@ -125,6 +125,9 @@
       <version name="1.0" author="Aarrow" time="2022-10-03T03:23:21Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/eb0bd0d550257a4c6e1aac331fd64428013a9e08/RandomizeStretchMarkers/randomize%20selected%20take%20stretch%20marker%20positions%20(altering%20playrate).lua</source>
       </version>
+      <version name="1.1" author="Aarrow" time="2022-10-03T16:16:01Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/c739a506c0d26373066dcca1b709d067243cc202/RandomizeStretchMarkers/randomize%20selected%20take%20stretch%20marker%20positions%20(altering%20playrate).lua</source>
+      </version>
     </reapack>
     <reapack name="randomize selected take stretch marker slopes and positions.lua" type="script" desc="Randomizes slope and position of stretch markers">
       <metadata>
@@ -135,14 +138,6 @@
       </version>
       <version name="1.1" author="Aarrow" time="2022-10-03T03:42:56Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/965d26b6c0a2aee1820ec575e5da6550195e5a46/RandomizeStretchMarkers/randomize%20selected%20take%20stretch%20marker%20slopes%20and%20positions.lua</source>
-      </version>
-    </reapack>
-    <reapack name="randomize selected take stretch marker slopes, keeping position.lua" type="script" desc="Group selected tracks into a new folder track with a selected color">
-      <metadata>
-        <link rel="donation">https://paypal.me/Aarr0w</link>
-      </metadata>
-      <version name="0.1" author="Aarrow" time="2022-10-03T03:23:21Z">
-        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/eb0bd0d550257a4c6e1aac331fd64428013a9e08/RandomizeStretchMarkers/randomize%20selected%20take%20stretch%20marker%20slopes,%20keeping%20position.lua</source>
       </version>
     </reapack>
   </category>
