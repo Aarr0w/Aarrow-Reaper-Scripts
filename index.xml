@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Aarrow Reaper Scripts" commit="c739a506c0d26373066dcca1b709d067243cc202">
-  <category name="8ChannelMixer">
-    <reapack name="8 Channel Mixer.jsfx" type="effect" desc=": Utility for mixing 4 stereo pairs on a single track">
-      <version name="1.0" author="Aarr0w" time="2022-09-03T21:14:32Z">
-        <source>https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/078455f36622930f88e92b059ae5bd5f42d3a6fc/8ChannelMixer/8%20Channel%20Mixer.jsfx</source>
-      </version>
-    </reapack>
-  </category>
+<index version="1" name="Aarrow Reaper Scripts" commit="5fcf30f22cfa9a27d6c39675ed26174df0d5cefc">
   <category name="CreateFolderFromSelection">
     <reapack name="Create folder from selected tracks.lua" type="script" desc="Group selected tracks into a new folder track with a selected color">
       <metadata>
@@ -114,6 +107,16 @@
       </metadata>
       <version name="1.1" author="Aarrow" time="2022-09-08T05:37:14Z">
         <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/fd7a4bade7e6c9ffb7767c2ea38d0809d3f10a23/InsertSendSidechain/Insert%20new%20track,%20send%20audio%20(sidechain)%20to%20selected%20track.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="MIdiAccelRall">
+    <reapack name="Midi Ritard_Rallentando.lua" type="script" desc="Creates accel. by shifting selected note positions">
+      <metadata>
+        <link rel="donation">https://paypal.me/Aarr0w</link>
+      </metadata>
+      <version name="0.1" author="Aarrow" time="2022-10-04T15:37:25Z">
+        <source main="main">https://github.com/Aarr0w/Aarrow-Reaper-Scripts/raw/f47b8afc23c518034f48666fde8082fd7d7f77e0/MIdiAccelRall/Midi%20Ritard_Rallentando.lua</source>
       </version>
     </reapack>
   </category>
